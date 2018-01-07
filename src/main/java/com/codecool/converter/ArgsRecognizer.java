@@ -8,11 +8,12 @@ import java.util.Map;
 
 public class ArgsRecognizer {
 
-    public String path;
+    public String path = null;
     List<String> acceptedTypesList =  Arrays.asList("JSON", "TABLE", "XML");
     public Map argsMap = new HashMap();
 
    ArgsRecognizer() {
+
        this.argsMap.put("type", "TABLE");
    }
 
@@ -36,13 +37,13 @@ public class ArgsRecognizer {
     public void argRecognizer(String[] args) {
 
         for(String s : args) {
-            isPath(s);
-            isType(s);
+            setPath(s);
+            setType(s);
         }
     }
 
 
-    public void isType(String arg) {
+    public void setType(String arg) {
 
         if(acceptedTypesList.contains(arg.toUpperCase())) {
             this.argsMap.put("type", arg);
@@ -50,11 +51,17 @@ public class ArgsRecognizer {
     }
 
 
-    public void isPath(String arg) {
+    public void setPath(String arg) {
 
-        String[] parts = arg.split(".");
-        if(parts[1].equals("csv")) {
-            this.argsMap.put("path", arg);
+        for (int i = 0; i < arg.length(); i++) {
+            String letter = String.valueOf(arg.charAt(i));
+            if (letter.equals(".")) {
+                String[] parts = arg.split("\\.");
+                if (parts[1].equals("csv")) {
+                    this.argsMap.put("path", arg);
+                    this.path = arg;
+                }
+            }
         }
     }
 
