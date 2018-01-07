@@ -12,10 +12,10 @@ public class ArgsRecognizer {
     List<String> acceptedTypesList =  Arrays.asList("JSON", "TABLE", "XML");
     public Map argsMap = new HashMap();
 
-   ArgsRecognizer() {
+    public ArgsRecognizer() {
 
        this.argsMap.put("type", "TABLE");
-   }
+    }
 
 
     public Map recognize(String[] args) {
@@ -29,7 +29,7 @@ public class ArgsRecognizer {
 
     public boolean isSizeOK(String[] args) {
 
-        return (args.length > 0 & args.length <= 2);
+        return (args.length <= 2);
 
     }
 
@@ -46,7 +46,7 @@ public class ArgsRecognizer {
     public void setType(String arg) {
 
         if(acceptedTypesList.contains(arg.toUpperCase())) {
-            this.argsMap.put("type", arg);
+            this.argsMap.put("type", arg.toUpperCase());
         }
     }
 
