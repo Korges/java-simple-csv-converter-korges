@@ -1,9 +1,27 @@
 package com.codecool.converter;
 
+import com.codecool.converter.Factory.OutputFormatterFactory;
+import com.codecool.converter.Formatter.OutputFormatter;
+
+import java.util.List;
+
 public class SimpleCsvConverter {
 
-    public void converter(String file, String outputFormat) {
+    FileReader fileReader;
+    OutputFormatterFactory outputFormatterFactory;
 
-        System.out.println("I convert CSV to output format" );
+    SimpleCsvConverter(FileReader fileReader, OutputFormatterFactory outputFormatterFactory) {
+
+        this.fileReader = fileReader;
+        this.outputFormatterFactory = outputFormatterFactory;
+
+    }
+
+
+    public void convert(String file, String outputFormat) {
+
+        List<List<String>> data = fileReader.readData(file);
+        OutputFormatter factory = outputFormatterFactory.createByFormat(outputFormat);
+
     }
 }
