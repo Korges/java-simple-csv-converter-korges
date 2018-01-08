@@ -1,6 +1,5 @@
 package com.codecool.converter.Formatter;
 
-import java.io.File;
 import java.util.List;
 
 public class TableOutputFormatter implements OutputFormatter{
@@ -8,6 +7,11 @@ public class TableOutputFormatter implements OutputFormatter{
 
     public void printToConsole(List<List<String>> data) {
 
-        System.out.println("table");
+        for(List<String> list : data) {
+            for(String s : list) {
+                System.out.print(s + ", ");
+            }
+            System.out.println();
+        }
     }
 }
