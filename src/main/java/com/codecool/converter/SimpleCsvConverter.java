@@ -22,6 +22,6 @@ public class SimpleCsvConverter {
 
         List<List<String>> data = fileReader.readData(file);
         OutputFormatter factory = outputFormatterFactory.createByFormat(outputFormat);
-
+        factory.printToConsole(data);
     }
 }
