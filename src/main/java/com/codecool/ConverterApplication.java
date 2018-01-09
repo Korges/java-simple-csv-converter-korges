@@ -15,11 +15,10 @@ public class ConverterApplication {
         ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("ConverterContext.xml");
         SimpleCsvConverter csvConverter = ctx.getBean(SimpleCsvConverter.class);
 
-
         System.out.println("Application has started...");
         Map<String, String> argsMap = recognizer.recognize(args);
 
-        if(recognizer.hasPath()){
+        if(recognizer.hasPathDefined()){
 
             csvConverter.convert(argsMap.get("path"), argsMap.get("type"));
 
