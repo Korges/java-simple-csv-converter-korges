@@ -7,11 +7,14 @@ public class TableOutputFormatter implements OutputFormatter{
 
     public void printToConsole(List<List<String>> data) {
 
-        for(List<String> list : data) {
-            for(String s : list) {
-                System.out.print(s + ", ");
-            }
-            System.out.println();
+        for(List<String> line : data) {
+
+            String formattedLine = line.toString()
+                    .replace("[","")
+                    .replace("]","");
+
+            System.out.println(formattedLine);
+
         }
     }
 }
