@@ -8,9 +8,9 @@ import java.util.Map;
 
 public class ArgsRecognizer {
 
-    public String path = null;
+    private String path = null;
     List<String> acceptedTypesList =  Arrays.asList("JSON", "TABLE", "XML");
-    public Map argsMap = new HashMap();
+    private Map argsMap = new HashMap();
 
     public ArgsRecognizer() {
 
@@ -18,7 +18,7 @@ public class ArgsRecognizer {
     }
 
 
-    public Map recognize(String[] args) {
+    public Map<String, String> recognize(String[] args) {
 
         if(isSizeOK(args)) {
             argRecognizer(args);
@@ -27,14 +27,14 @@ public class ArgsRecognizer {
     }
 
 
-    public boolean isSizeOK(String[] args) {
+    private boolean isSizeOK(String[] args) {
 
         return (args.length <= 2);
 
     }
 
 
-    public void argRecognizer(String[] args) {
+    private void argRecognizer(String[] args) {
 
         for(String s : args) {
             setPath(s);
@@ -43,7 +43,7 @@ public class ArgsRecognizer {
     }
 
 
-    public void setType(String arg) {
+    private void setType(String arg) {
 
         if(acceptedTypesList.contains(arg.toUpperCase())) {
             this.argsMap.put("type", arg.toUpperCase());
@@ -51,7 +51,7 @@ public class ArgsRecognizer {
     }
 
 
-    public void setPath(String arg) {
+    private void setPath(String arg) {
 
         for (int i = 0; i < arg.length(); i++) {
             String letter = String.valueOf(arg.charAt(i));
@@ -66,7 +66,7 @@ public class ArgsRecognizer {
     }
 
 
-    public boolean hasPath() {
+    public boolean hasPathDefined() {
 
         boolean hasPath = false;
 
