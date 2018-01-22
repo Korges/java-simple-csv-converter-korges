@@ -1,27 +1,30 @@
 package com.codecool;
 
-import com.codecool.converter.ArgsRecognizer;
-import com.codecool.converter.SimpleCsvConverter;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.util.Map;
+import com.codecool.converter.SimpleCsvConverter;
+import com.codecool.converter.helper.Path;
+import com.codecool.converter.helper.Format;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class ConverterApplication {
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
 
-        ArgsRecognizer recognizer = new ArgsRecognizer();
 
         ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("ConverterContext.xml");
-        SimpleCsvConverter csvConverter = ctx.getBean(SimpleCsvConverter.class);
+        SimpleCsvConverter csvConverter = ctx.getBean("csvConverter", SimpleCsvConverter.class);
 
         System.out.println("Application has started...");
-        Map<String, String> argsMap = recognizer.recognize(args);
 
-        if(recognizer.hasPathDefined()){
-
-            csvConverter.convert(argsMap.get("path"), argsMap.get("type"));
-
+        if (args.length == 0) {
+            System.out.println("No input file defined");
+        } else if(args.length == 1) {
+            String path = Path.recognizeFile(args);
+            csvConverter.convert(path);
+        } else {
+            String path = Path.recognizeFile(args);
+            csvConverter.convert(path, Format.recognizeFormat(args));
         }
+
     }
 }

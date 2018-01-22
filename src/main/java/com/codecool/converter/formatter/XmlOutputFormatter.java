@@ -1,4 +1,4 @@
-package com.codecool.converter.Formatter;
+package com.codecool.converter.formatter;
 
 
 import java.util.List;

@@ -1,7 +1,8 @@
 package com.codecool.converter;
 
 import com.codecool.converter.Factory.OutputFormatterFactory;
-import com.codecool.converter.Formatter.OutputFormatter;
+import com.codecool.converter.formatter.OutputFormatter;
+import com.codecool.converter.helper.Format;
 
 import java.util.List;
 
@@ -18,10 +19,21 @@ public class SimpleCsvConverter {
     }
 
 
-    public void convert(String file, String outputFormat) {
+    public void convert(String file){
 
-        List<List<String>> data = fileReader.readData(file);
-        OutputFormatter factory = outputFormatterFactory.createByFormat(outputFormat);
-        factory.printToConsole(data);
+        convert(file, Format.TABLE);
+    }
+
+
+    public void convert(String file, Format outputFormat){
+
+
+        try {
+            List<List<String>> data = fileReader.readData(file);
+            OutputFormatter factory = outputFormatterFactory.createByFormat(outputFormat);
+            factory.printToConsole(data);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
