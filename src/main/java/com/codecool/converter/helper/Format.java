@@ -15,7 +15,6 @@ public enum Format {
         return this.label;
     }
 
-
     public static Format recognizeFormat(String[] args) {
         Format format = null;
         for (Format f: Format.values()) {
@@ -42,5 +41,4 @@ public enum Format {
             throw new NullPointerException("Wrong format");
         }
     }
-
 }

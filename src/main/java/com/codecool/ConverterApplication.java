@@ -1,6 +1,5 @@
 package com.codecool;
 
-
 import com.codecool.converter.SimpleCsvConverter;
 import com.codecool.converter.helper.Path;
 import com.codecool.converter.helper.Format;
@@ -9,7 +8,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class ConverterApplication {
 
     public static void main(String[] args){
-
 
         ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("ConverterContext.xml");
         SimpleCsvConverter csvConverter = ctx.getBean("simpleCsvConverter", SimpleCsvConverter.class);
@@ -25,6 +23,5 @@ public class ConverterApplication {
             String path = Path.recognizeFile(args);
             csvConverter.convert(path, Format.recognizeFormat(args));
         }
-
     }
 }

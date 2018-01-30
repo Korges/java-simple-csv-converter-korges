@@ -2,8 +2,8 @@ package com.codecool.converter.helper;
 
 public class Path {
 
-
     public static String recognizeFile(String[] args) {
+
         String path = null;
         for (String s : args) {
             if (validateFile(s)) {
@@ -14,8 +14,8 @@ public class Path {
         return path;
     }
 
-
     private static boolean validateFile(String arg) {
+
         boolean hasPath = false;
 
         for (int i = 0; i < arg.length(); i++) {
@@ -29,11 +29,9 @@ public class Path {
     }
 
     public static void ifNullThrowException(String path) {
-        if(path == null) {
+
+        if (path == null) {
             throw new NullPointerException("Wrong path");
         }
     }
-
-
-
 }

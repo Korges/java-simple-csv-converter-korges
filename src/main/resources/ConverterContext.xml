@@ -9,7 +9,7 @@
     <context:component-scan base-package="com.codecool"/>
 
     <!--<bean id="fileReader" class="com.codecool.converter.FileReader"/>-->
-    <!--<bean id="outputFormatterFactory" class="com.codecool.converter.Factory.OutputFormatterFactory"/>-->
+    <!--<bean id="outputFormatterFactory" class="com.codecool.converter.factory.OutputFormatterFactory"/>-->
     <!--<bean id ="csvConverter" class="com.codecool.converter.SimpleCsvConverter">-->
         <!--<constructor-arg ref="fileReader"/>-->
         <!--<constructor-arg ref="outputFormatterFactory"/>-->

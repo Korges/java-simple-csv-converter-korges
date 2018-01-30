@@ -1,7 +1,6 @@
 package com.codecool.converter;
 
 import org.springframework.stereotype.Component;
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -24,7 +23,6 @@ public class FileReader {
             while ((line = br.readLine()) != null) {
 
                 data.add(Arrays.asList(line.split(",")));
-
             }
 
         } catch (FileNotFoundException e) {
