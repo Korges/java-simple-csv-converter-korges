@@ -2,8 +2,10 @@ package com.codecool.converter.Factory;
 
 import com.codecool.converter.formatter.OutputFormatter;
 import com.codecool.converter.helper.Format;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
+@Component
 public class OutputFormatterFactory {
 
 
