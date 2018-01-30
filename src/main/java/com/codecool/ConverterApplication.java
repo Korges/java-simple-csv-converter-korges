@@ -12,7 +12,7 @@ public class ConverterApplication {
 
 
         ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("ConverterContext.xml");
-        SimpleCsvConverter csvConverter = ctx.getBean("csvConverter", SimpleCsvConverter.class);
+        SimpleCsvConverter csvConverter = ctx.getBean("simpleCsvConverter", SimpleCsvConverter.class);
 
         System.out.println("Application has started...");
 
