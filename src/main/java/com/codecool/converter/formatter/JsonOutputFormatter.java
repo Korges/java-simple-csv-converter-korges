@@ -13,20 +13,20 @@ public class JsonOutputFormatter implements OutputFormatter {
         System.out.println("[");
         for (List<String> list : data) {
 
-            System.out.println("{");
+            System.out.println("\t{");
             for (int i = 0; i < list.size(); i++) {
                 if (i < list.size() - 1) {
-                    System.out.println("\t\"" + label.get(i) + "\":\"" + list.get(i) + "\",");
+                    System.out.println("\t\t\"" + label.get(i) + "\":\"" + list.get(i) + "\",");
                 } else {
-                    System.out.println("\t\"" + label.get(i) + "\":\"" + list.get(i) + "\"");
+                    System.out.println("\t\t\"" + label.get(i) + "\":\"" + list.get(i) + "\"");
                 }
             }
             if (data.indexOf(list) < data.size()-1) {
 
-                System.out.println("},");
+                System.out.println("\t},");
             } else {
 
-                System.out.println("}");
+                System.out.println("\t}");
             }
         }
         System.out.println("]");
