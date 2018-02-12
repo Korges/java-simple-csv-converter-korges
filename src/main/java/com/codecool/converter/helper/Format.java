@@ -15,30 +15,8 @@ public enum Format {
         return this.label;
     }
 
-    public static Format recognizeFormat(String[] args) {
-        Format format = null;
-        for (Format f: Format.values()) {
-            if(validateFormat(f, args)) {
-                format = f;
-            }
-        }
-        ifNullThrowException(format);
-        return format;
-    }
+    public static Format recognizeFormat(String format) {
 
-    public static boolean validateFormat(Format f, String[] args) {
-        boolean hasFormat = false;
-        for(String s: args) {
-            if(f.getLabel().equals(s.toLowerCase())){
-                hasFormat = true;
-            }
-        }
-        return hasFormat;
-    }
-
-    public static void ifNullThrowException(Format format) {
-        if(format == null) {
-            throw new NullPointerException("Wrong format");
-        }
+        return Format.valueOf(format.toUpperCase());
     }
 }
