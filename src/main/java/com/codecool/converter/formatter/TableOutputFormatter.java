@@ -14,7 +14,6 @@ public class TableOutputFormatter implements OutputFormatter{
                     .replace("]","");
 
             System.out.println(formattedLine);
-
         }
     }
 }
