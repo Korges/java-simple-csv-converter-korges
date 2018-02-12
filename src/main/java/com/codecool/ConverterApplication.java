@@ -1,9 +1,10 @@
 package com.codecool;
 
 import com.codecool.converter.SimpleCsvConverter;
-import com.codecool.converter.helper.Path;
 import com.codecool.converter.helper.Format;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.io.File;
 
 public class ConverterApplication {
 
@@ -17,11 +18,13 @@ public class ConverterApplication {
         if (args.length == 0) {
             System.out.println("No input file defined");
         } else if(args.length == 1) {
-            String path = Path.recognizeFile(args);
-            csvConverter.convert(path);
+            csvConverter.convert(new File(args[0]));
         } else {
-            String path = Path.recognizeFile(args);
-            csvConverter.convert(path, Format.recognizeFormat(args));
+            try {
+                csvConverter.convert(new File(args[0]), Format.recognizeFormat(args[1]));
+            } catch (IllegalArgumentException e) {
+                System.out.println("Wrong output format");
+            }
         }
     }
 }
